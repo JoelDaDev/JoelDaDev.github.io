@@ -140,22 +140,22 @@ function initWritingProgress() {
         }
 
         const projectTitleWordCount = document.querySelector('.project-header h2');
-        if (projectTitleWordCount && projectTitleWordCount.textContent.includes('30,463')) {
-          projectTitleWordCount.innerHTML = projectTitleWordCount.innerHTML.replace('30,463', data.wordCount.toLocaleString());
+        if (projectTitleWordCount && projectTitleWordCount.textContent.includes('0')) {
+          projectTitleWordCount.innerHTML = projectTitleWordCount.innerHTML.replace('0', data.wordCount.toLocaleString());
         }
 
         const overviewWordCount = document.querySelector('#bloodstained-honor-overview p:nth-of-type(2)');
-        if (overviewWordCount && overviewWordCount.innerHTML.includes('30,463')) {
-          const progressPercent = Math.round((data.wordCount / 100000) * 100);
-          overviewWordCount.innerHTML = `<strong>Progress:</strong> ${progressPercent}% complete (${data.wordCount.toLocaleString()} / 100,000 words)`;
+        if (overviewWordCount && overviewWordCount.innerHTML.includes('0')) {
+          const progressPercent = Math.round((data.wordCount / 800000) * 100);
+          overviewWordCount.innerHTML = `<strong>Progress:</strong> ${progressPercent}% complete (${data.wordCount.toLocaleString()} / 80,000 words)`;
         }
 
         const allOverviewParagraphs = document.querySelectorAll('#bloodstained-honor-overview p');
         
         allOverviewParagraphs.forEach(p => {
           if (p.innerHTML.includes('Progress:')) {
-            const progressPercent = Math.round((data.wordCount / 100000) * 100);
-            p.innerHTML = `<strong>Progress:</strong> ${progressPercent}% complete (${data.wordCount.toLocaleString()} / 100,000 words)`;
+            const progressPercent = Math.round((data.wordCount / 800000) * 100);
+            p.innerHTML = `<strong>Progress:</strong> ${progressPercent}% complete (${data.wordCount.toLocaleString()} / 80,000 words)`;
           }
           
           if (p.innerHTML.includes('Current Chapter:')) {
@@ -169,7 +169,7 @@ function initWritingProgress() {
 
         const progressBar = document.querySelector('#bloodstained-honor-overview .progress-fill');
         if (progressBar) {
-          const progressPercent = Math.round((data.wordCount / 100000) * 100);
+          const progressPercent = Math.round((data.wordCount / 800000) * 100);
           progressBar.style.width = progressPercent + "%";
         }
       }
