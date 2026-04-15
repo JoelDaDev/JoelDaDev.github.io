@@ -1,6 +1,11 @@
-/* Fonts */
+/* ============================================
+   IMPORTS & FONTS
+   ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
+/* ============================================
+   BASE STYLES & LAYOUT
+   ============================================ */
 body {
     background-color: #0a0a0a;
     color: #e8f4f8;
@@ -8,20 +13,28 @@ body {
     font-size: 1.2rem;
     margin: 0;
     padding: 0;
-    position: relative;
-    line-height: 1.4;
+    line-height: 1.5;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+    text-rendering: optimizeLegibility;
 }
 
 .main-wrapper {
     flex: 1;
 }
 
-/* Scanline */
+.content {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+/* ============================================
+   RETRO EFFECTS (Scanlines & Grid)
+   ============================================ */
 body::before {
     content: "";
     position: fixed;
@@ -45,22 +58,25 @@ body::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image:
-        radial-gradient(circle at 1px 1px, rgba(0, 191, 255, 0.1) 1px, transparent 0);
+    background-image: radial-gradient(circle at 1px 1px, rgba(0, 191, 255, 0.1) 1px, transparent 0);
     background-size: 30px 30px;
     pointer-events: none;
     z-index: -1;
 }
 
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
 h1,
 h2,
 h3 {
     font-family: 'Press Start 2P', monospace;
     color: #00bfff;
-    text-shadow:
-        0 0 10px #00bfff;
+    text-shadow: 0 0 3px rgba(0, 191, 255, 0.5);
     margin-bottom: 15px;
     letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1 {
@@ -70,7 +86,6 @@ h1 {
 
 h2 {
     font-size: 1.1rem;
-    margin-bottom: 15px;
 }
 
 a {
@@ -82,11 +97,33 @@ a {
 
 a:hover {
     color: #00bfff;
-    text-shadow: 0 0 5px #00bfff;
+    text-shadow: 0 0 2px rgba(0, 191, 255, 0.4);
     border-bottom: 1px solid #00bfff;
 }
 
-/* Header */
+blockquote {
+    background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+    border-left: 4px solid #00bfff;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+    font-size: 1.3rem;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+}
+
+blockquote p {
+    margin: 0 0 10px 0;
+}
+
+blockquote cite {
+    font-size: 1.1rem;
+    color: #87ceeb;
+}
+
+/* ============================================
+   HEADER & NAVIGATION
+   ============================================ */
 .site-header {
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
     text-align: center;
@@ -98,13 +135,13 @@ a:hover {
     font-family: 'Press Start 2P', monospace;
     font-size: 2.5rem;
     color: #00bfff;
-    text-shadow:
-        0 0 10px #00bfff;
+    text-shadow: 0 0 5px rgba(0, 191, 255, 0.5);
     margin: 0;
     letter-spacing: 4px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Navbar */
 .navbar {
     background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
     padding: 10px 15px;
@@ -146,12 +183,21 @@ a:hover {
     box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
 }
 
-.content {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px 20px;
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+    padding: 10px;
+    text-align: center;
+    font-size: 1rem;
+    border-top: 2px solid #00bfff;
+    margin-top: 30px;
 }
 
+/* ============================================
+   SECTIONS & CONTENT AREAS
+   ============================================ */
 section {
     display: none;
     text-align: center;
@@ -166,7 +212,9 @@ section p {
     margin: 10px 0;
 }
 
-/* Word Count */
+/* ============================================
+   CARDS & WIDGETS
+   ============================================ */
 .word-count {
     background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
     border: 2px solid #00bfff;
@@ -181,32 +229,64 @@ section p {
     font-family: 'Press Start 2P', monospace;
     font-size: 1.8rem;
     color: #00bfff;
-    text-shadow: 0 0 10px #00bfff;
+    text-shadow: 0 0 3px rgba(0, 191, 255, 0.5);
     margin: 8px 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
-/* Blockquote */
-blockquote {
+.spotify-widget {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
-    border-left: 4px solid #00bfff;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
     padding: 20px;
-    margin: 20px 0;
-    border-radius: 0 8px 8px 0;
-    font-style: italic;
-    font-size: 1.3rem;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.1);
+    max-width: 350px;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
+    text-align: center;
 }
 
-blockquote p {
-    margin: 0 0 10px 0;
+.spotify-widget img {
+    width: 150px;
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
 }
 
-blockquote cite {
-    font-size: 1.1rem;
-    color: #87ceeb;
+.spotify-info p {
+    margin: 5px 0;
+    color: #00bfff;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    text-shadow: 0 0 2px rgba(0, 191, 255, 0.3);
 }
 
-/* Project grid */
+/* ============================================
+   LISTS
+   ============================================ */
+.fun-facts {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 600px;
+    margin: auto;
+}
+
+.fun-facts li {
+    margin: 12px 0;
+    padding: 8px;
+    border-left: 3px solid #00bfff;
+    background: rgba(0, 191, 255, 0.05);
+    border-radius: 0 5px 5px 0;
+}
+
+/* ============================================
+   PROJECT GRID
+   ============================================ */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -257,66 +337,9 @@ blockquote cite {
     font-size: 1.1rem;
 }
 
-
-.fun-facts {
-    list-style: none;
-    padding: 0;
-    text-align: left;
-    max-width: 600px;
-    margin: auto;
-}
-
-.fun-facts li {
-    margin: 12px 0;
-    padding: 8px;
-    border-left: 3px solid #00bfff;
-    background: rgba(0, 191, 255, 0.05);
-    border-radius: 0 5px 5px 0;
-}
-
-/* Footer */
-footer {
-    background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
-    padding: 10px;
-    text-align: center;
-    font-size: 1rem;
-    border-top: 2px solid #00bfff;
-    margin-top: 30px;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-    .navbar ul {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
-
-    .navbar a {
-        font-size: 0.7rem;
-    }
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    h2 {
-        font-size: 0.9rem;
-    }
-
-    .content {
-        padding: 25px 15px;
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    section {
-        padding: 15px 0;
-    }
-}
-
-/* Project styling */
+/* ============================================
+   PROJECT DETAILS
+   ============================================ */
 .project {
     background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
     border: 2px solid #00bfff;
@@ -371,6 +394,9 @@ footer {
     display: block;
 }
 
+/* ============================================
+   TABS
+   ============================================ */
 .content-tabs {
     display: flex;
     background: rgba(0, 191, 255, 0.05);
@@ -399,7 +425,7 @@ footer {
 .tab-button.active {
     background: rgba(0, 191, 255, 0.2);
     color: #00bfff;
-    text-shadow: 0 0 5px #00bfff;
+    text-shadow: 0 0 2px rgba(0, 191, 255, 0.4);
 }
 
 .tab-content {
@@ -412,6 +438,9 @@ footer {
     display: block;
 }
 
+/* ============================================
+   CHARACTER & LORE CARDS
+   ============================================ */
 .character-card,
 .lore-section {
     background: rgba(0, 191, 255, 0.05);
@@ -434,88 +463,60 @@ footer {
     padding: 20px;
     margin: 15px 0;
     font-style: italic;
-    position: relative;
 }
 
+/* ============================================
+   PROGRESS BARS & STATS
+   ============================================ */
 .progress-bar {
     background: #333;
     height: 15px;
     border-radius: 8px;
     overflow: hidden;
     margin: 10px 0;
-}
-
-.progress-fill {
-    background: linear-gradient(90deg, #00bfff, #87ceeb);
-    height: 100%;
-    border-radius: 8px;
-    transition: width 0.3s ease;
-}
-
-/* Mobile responsive for project content */
-@media (max-width: 768px) {
-    .project-stats {
-        font-size: 1rem;
-        gap: 10px;
-    }
-
-    .content-tabs {
-        flex-direction: column;
-    }
-
-    .tab-button {
-        flex: none;
-    }
-}
-
-.spotify-widget {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
-    border: 2px solid #00bfff;
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 350px;
-    margin: 20px auto;
-    box-shadow: 0 0 20px rgba(0, 191, 255, 0.2);
-    text-align: center;
-}
-
-.spotify-widget img {
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: 0 0 15px rgba(0, 191, 255, 0.4);
-}
-
-.spotify-info p {
-    margin: 5px 0;
-    color: #00bfff;
-    font-family: 'VT323', monospace;
-    font-size: 1rem;
-    text-shadow: 0 0 5px #00bfff;
-}
-
-.progress-bar {
     width: 100%;
-    height: 10px;
-    background: #333;
-    border-radius: 8px;
-    margin-top: 10px;
-    overflow: hidden;
 }
 
 .progress-fill {
-    width: 0%;
-    height: 100%;
     background: linear-gradient(90deg, #00bfff, #87ceeb);
+    height: 100%;
     border-radius: 8px;
     transition: width 0.3s ease;
 }
 
-/* Progress Timeline Styles */
+.demo-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(0, 191, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(0, 191, 255, 0.2);
+}
+
+.stat {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-number {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.5rem;
+    color: #00bfff;
+    text-shadow: 0 0 3px rgba(0, 191, 255, 0.5);
+    margin-bottom: 8px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.stat-label {
+    color: #87ceeb;
+    font-size: 1rem;
+}
+
+/* ============================================
+   PROGRESS TIMELINE
+   ============================================ */
 .progress-timeline {
     max-width: 800px;
     margin: 30px auto;
@@ -558,13 +559,20 @@ footer {
     box-shadow: 0 0 10px rgba(135, 206, 235, 0.5);
 }
 
+.progress-entry.upcoming .progress-content {
+    border-color: rgba(135, 206, 235, 0.3);
+    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
 .progress-date {
     font-family: 'Press Start 2P', monospace;
     font-size: 0.7rem;
     color: #87ceeb;
-    text-shadow: 0 0 5px rgba(135, 206, 235, 0.5);
+    text-shadow: 0 0 2px rgba(135, 206, 235, 0.4);
     margin-bottom: 10px;
     letter-spacing: 1px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .progress-content {
@@ -582,6 +590,9 @@ footer {
     color: #00bfff;
 }
 
+/* ============================================
+   TAGS
+   ============================================ */
 .progress-tags {
     margin-bottom: 15px;
     display: flex;
@@ -641,6 +652,9 @@ footer {
     border-color: #9e9e9e;
 }
 
+/* ============================================
+   FEATURE LISTS & UPCOMING ITEMS
+   ============================================ */
 .feature-list {
     margin: 15px 0;
     padding: 15px;
@@ -652,34 +666,6 @@ footer {
 .feature {
     margin: 8px 0;
     font-size: 1.1rem;
-}
-
-.demo-stats {
-    display: flex;
-    justify-content: space-around;
-    margin: 20px 0;
-    padding: 20px;
-    background: rgba(0, 191, 255, 0.05);
-    border-radius: 8px;
-    border: 1px solid rgba(0, 191, 255, 0.2);
-}
-
-.stat {
-    text-align: center;
-    flex: 1;
-}
-
-.stat-number {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 1.5rem;
-    color: #00bfff;
-    text-shadow: 0 0 10px #00bfff;
-    margin-bottom: 8px;
-}
-
-.stat-label {
-    color: #87ceeb;
-    font-size: 1rem;
 }
 
 .upcoming-list {
@@ -695,13 +681,67 @@ footer {
     font-size: 1.1rem;
 }
 
-.progress-entry.upcoming .progress-content {
-    border-color: rgba(135, 206, 235, 0.3);
-    background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
-}
-
-/* Mobile responsiveness for progress timeline */
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
 @media (max-width: 768px) {
+    /* Navigation */
+    .navbar ul {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .navbar a {
+        font-size: 0.7rem;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 0.9rem;
+    }
+
+    /* Layout */
+    .content {
+        padding: 25px 15px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    section {
+        padding: 15px 0;
+    }
+
+    /* Project Content */
+    .project-stats {
+        font-size: 1rem;
+        gap: 10px;
+    }
+
+    .content-tabs {
+        flex-direction: column;
+    }
+
+    .tab-button {
+        flex: none;
+    }
+
+    /* Stats */
+    .demo-stats {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .stat-number {
+        font-size: 1.2rem;
+    }
+
+    /* Progress Timeline */
     .progress-timeline::before {
         left: 15px;
     }
@@ -715,12 +755,8 @@ footer {
         width: 14px;
         height: 14px;
     }
-    
-    .demo-stats {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
+
+    /* Tags */
     .progress-tags {
         gap: 5px;
     }
@@ -728,9 +764,5 @@ footer {
     .tag {
         font-size: 0.8rem;
         padding: 3px 8px;
-    }
-    
-    .stat-number {
-        font-size: 1.2rem;
     }
 }
