@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Of Fog and Shadow</title>
+<meta name="description" content="Joel's NaNoWriMo 2026 progress on Of Fog and Shadow, a dystopian fantasy novel.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* One narrow column, read top to bottom like a ledger kept inside the Wall.
+   The progress bar is the city's edge: words written are clear ground, the rest is still Fog. */
+:root {
+  --bg: #E5E9E7;
+  --surface: #F1F3F1;
+  --ink: #1B2326;
+  --muted: #5B6769;
+  --line: #C3CBC9;
+  --brass: #86672B;
+  --brass-fill: #B8924A;
+  --fog-a: #C4CCCA;
+  --fog-b: #D6DCDA;
+  --good: #3F7350;
+  --warn: #9A5B2A;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #101618; --surface: #172022; --ink: #DCE3E1; --muted: #8C999A; --line: #2A3639;
+    --brass: #D3AF68; --brass-fill: #A9863F; --fog-a: #2B3639; --fog-b: #3A474A;
+    --good: #7FB892; --warn: #E0A36B; color-scheme: dark;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.55; }
+.wrap {
+  max-width: 720px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+  display: grid; gap: 44px;
+}
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+h1 { font-family: var(--display); font-weight: 600; font-size: clamp(34px, 7vw, 54px); line-height: 1.05; letter-spacing: .02em; margin: 8px 0 10px; text-wrap: balance; }
+h2 { font-family: var(--display); font-weight: 500; font-size: 15px; letter-spacing: .16em; text-transform: uppercase; margin: 0 0 14px; color: var(--brass); }
+.lede { margin: 0; color: var(--muted); max-width: 52ch; }
+
+.count { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 12px; font-variant-numeric: tabular-nums; }
+.count .big { font-family: var(--mono); font-weight: 500; font-size: clamp(40px, 9vw, 64px); line-height: 1; letter-spacing: -.02em; }
+.count .of { font-family: var(--mono); color: var(--muted); font-size: 18px; }
+.count .pct { margin-left: auto; font-family: var(--mono); color: var(--brass); font-size: 18px; }
+.bar { position: relative; height: 26px; margin-top: 16px; border: 1px solid var(--line); background: var(--fog-a); overflow: hidden; }
+.bar .fog { position: absolute; inset: 0; opacity: .9;
+  background:
+    radial-gradient(40% 120% at 20% 50%, var(--fog-b), transparent 70%),
+    radial-gradient(35% 140% at 60% 40%, var(--fog-b), transparent 70%),
+    radial-gradient(30% 120% at 90% 60%, var(--fog-b), transparent 70%);
+  background-size: 200% 100%; animation: drift 18s linear infinite; }
+@keyframes drift { from { background-position: 0 0; } to { background-position: -200% 0; } }
+.bar .fill { position: absolute; inset: 0 auto 0 0; width: 0; background: var(--brass-fill); transition: width .8s ease; }
+.bar .tick { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.bar .pace { position: absolute; top: -1px; bottom: -1px; width: 2px; background: var(--ink); }
+@media (prefers-reduced-motion: reduce) { .bar .fog { animation: none; } .bar .fill { transition: none; } }
+.scale { position: relative; height: 18px; margin-top: 6px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+.scale span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.scale span:first-child { transform: none; }
+.scale span:last-child { transform: translateX(-100%); }
+.status { margin: 14px 0 0; font-size: 15px; }
+.status b { font-weight: 600; }
+.ahead { color: var(--good); }
+.behind { color: var(--warn); }
+
+.stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.stat { padding: 14px 12px 14px 0; display: grid; gap: 2px; }
+.stat + .stat { padding-left: 14px; border-left: 1px solid var(--line); }
+.stat .k { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.stat .v { font-family: var(--mono); font-size: 22px; font-variant-numeric: tabular-nums; }
+.stat .s { font-size: 13px; color: var(--muted); }
+@media (max-width: 560px) {
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+
+.chart { width: 100%; height: auto; display: block; }
+.chart text { font-family: var(--mono); font-size: 11px; fill: var(--muted); }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 13px; color: var(--muted); margin-top: 6px; }
+.legend i { display: inline-block; width: 18px; height: 0; border-top: 2px solid var(--brass); vertical-align: middle; margin-right: 6px; }
+.legend i.dash { border-top: 2px dashed var(--muted); }
+
+.log { width: 100%; border-collapse: collapse; font-size: 15px; }
+.log th { text-align: left; font-family: var(--mono); font-weight: 400; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); padding: 0 10px 8px 0; border-bottom: 1px solid var(--line); }
+.log td { padding: 10px 10px 10px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.log td.n, .log th.n { text-align: right; font-family: var(--mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.log td.d { white-space: nowrap; font-family: var(--mono); font-size: 14px; }
+.log td.note { color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+.empty { padding: 22px; border: 1px dashed var(--line); color: var(--muted); }
+.empty strong { color: var(--ink); font-weight: 500; }
+
+.blurb { border-left: 2px solid var(--brass); padding-left: 18px; display: grid; gap: 12px; max-width: 60ch; }
+.blurb p { margin: 0; }
+.blurb .last { font-family: var(--display); font-size: 18px; letter-spacing: .02em; }
+
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">NaNoWriMo 2026 &middot; Joel's novel</p>
+    <h1>Of Fog and Shadow</h1>
+    <p class="lede">A dystopian fantasy, drafted one chapter a day through November. 50,000 words, thirty days.</p>
+  </header>
+
+  <section aria-labelledby="progress-h">
+    <h2 id="progress-h">Progress</h2>
+    <div class="count">
+      <span class="big" id="total">0</span>
+      <span class="of">/ 50,000 words</span>
+      <span class="pct" id="pct">0%</span>
+    </div>
+    <div class="bar" role="img" id="bar" aria-label="Progress toward 50,000 words">
+      <div class="fog"></div>
+      <div class="tick" style="left:20%"></div>
+      <div class="tick" style="left:40%"></div>
+      <div class="tick" style="left:50%"></div>
+      <div class="tick" style="left:60%"></div>
+      <div class="tick" style="left:80%"></div>
+      <div class="fill" id="fill"></div>
+      <div class="pace" id="pace" hidden></div>
+    </div>
+    <div class="scale" aria-hidden="true">
+      <span style="left:0">0</span>
+      <span style="left:50%">25k midpoint</span>
+      <span style="left:100%">50k</span>
+    </div>
+    <p class="status" id="status">Loading progress…</p>
+  </section>
+
+  <section class="stats" aria-label="Stats">
+    <div class="stat"><span class="k">Today</span><span class="v" id="s-today">0</span><span class="s" id="s-today-s">words logged</span></div>
+    <div class="stat"><span class="k">Daily avg</span><span class="v" id="s-avg">0</span><span class="s">goal 1,667</span></div>
+    <div class="stat"><span class="k">Writing</span><span class="v" id="s-ch">Prologue</span><span class="s">of 30 chapters</span></div>
+    <div class="stat"><span class="k">Finish</span><span class="v" id="s-fin">Nov 30</span><span class="s" id="s-fin-s">target</span></div>
+  </section>
+
+  <section aria-labelledby="chart-h">
+    <h2 id="chart-h">The month so far</h2>
+    <svg class="chart" id="chart" viewBox="0 0 640 250" role="img" aria-label="Cumulative words by day compared with the pace needed to reach 50,000"></svg>
+    <div class="legend"><span><i></i>Words written</span><span><i class="dash"></i>Pace to 50,000</span></div>
+  </section>
+
+  <section aria-labelledby="log-h">
+    <h2 id="log-h">Daily log</h2>
+    <div id="log"></div>
+  </section>
+
+  <section aria-labelledby="blurb-h">
+    <h2 id="blurb-h">The book</h2>
+    <div class="blurb">
+      <p>Five hundred years ago, humanity chained its gods. The world died for it.</p>
+      <p>What's left lives behind the Wall of Sanctum, on rationed water and borrowed light, while the Shade swallows everything beyond.</p>
+      <p>Tobin copies the Government's decrees. He was taken from the slums as a boy, given a new name, and taught to be grateful. When a rebel named Ves corners him in the market, Tobin threatens to turn him in.</p>
+      <p>He never does.</p>
+      <p>Instead, he starts reading. The histories have been scraped and rewritten. The rations keep shrinking. And beneath the city, the Engines hum like something breathing.</p>
+      <p class="last">Some lies are the only thing holding a city up.</p>
+    </div>
+  </section>
+
+  <footer>Updated by me as I write. Dates follow Central Time.</footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var GOAL = 50000, DAYS = 30, DAILY = Math.ceil(GOAL / DAYS);
+  var WEEK = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var entries = {}; // day number -> { words, note }
+
+  function $(id) { return document.getElementById(id); }
+  function fmt(n) { return Math.round(n).toLocaleString("en-US"); }
+  function weekday(day) { return WEEK[new Date(Date.UTC(2026, 10, day)).getUTCDay()]; }
+
+  // Today's position in November 2026, in Central Time. 0 = before Nov 1, 31 = after Nov 30.
+  function today() {
+    var p = {};
+    new Intl.DateTimeFormat("en-US", { timeZone: "America/Chicago", year: "numeric", month: "numeric", day: "numeric" })
+      .formatToParts(new Date()).forEach(function (x) { p[x.type] = +x.value; });
+    var t = Date.UTC(p.year, p.month - 1, p.day), start = Date.UTC(2026, 10, 1);
+    var idx = Math.floor((t - start) / 864e5) + 1;
+    return { idx: idx < 1 ? 0 : idx > 30 ? 31 : idx, untilStart: Math.ceil((start - t) / 864e5) };
+  }
+
+  function words(day) { var e = entries[day]; return e ? e.words : 0; }
+
+  // Read progress.json, ignoring anything malformed rather than breaking the page.
+  function load(data) {
+    entries = {};
+    var list = data && Array.isArray(data.entries) ? data.entries : [];
+    list.forEach(function (e) {
+      if (!e) return;
+      var d = Math.round(+e.day), w = Math.round(+e.words);
+      if (!(d >= 1 && d <= DAYS) || !isFinite(w) || w < 0) return;
+      entries[d] = { words: w, note: typeof e.note === "string" ? e.note.slice(0, 200) : "" };
+    });
+  }
+
+  function compute() {
+    var t = today(), total = 0, cum = [0], last = 0;
+    for (var d = 1; d <= DAYS; d++) {
+      total += words(d); cum.push(total);
+      if (entries[d]) last = d;
+    }
+    var elapsed = Math.min(Math.max(t.idx, 0), DAYS);
+    return { t: t, total: total, cum: cum, last: last, elapsed: elapsed, pace: Math.round(GOAL * elapsed / DAYS) };
+  }
+
+  function render() {
+    var c = compute(), t = c.t, total = c.total;
+    var pct = Math.min(100, total / GOAL * 100);
+    $("total").textContent = fmt(total);
+    $("pct").textContent = (pct >= 100 ? 100 : pct.toFixed(pct < 10 ? 1 : 0)) + "%";
+    $("fill").style.width = pct + "%";
+    $("bar").setAttribute("aria-label", fmt(total) + " of 50,000 words written");
+    var paceEl = $("pace");
+    if (c.elapsed > 0) {
+      paceEl.hidden = false;
+      paceEl.style.left = "calc(" + (c.pace / GOAL * 100) + "% - 1px)";
+      paceEl.title = "Pace for today: " + fmt(c.pace);
+    } else paceEl.hidden = true;
+
+    var st = $("status");
+    if (total >= GOAL) {
+      st.innerHTML = "<b class=\"ahead\">Done.</b> 50,000 words reached. The Fog has lifted.";
+    } else if (t.idx === 0) {
+      st.innerHTML = "Drafting starts <b>Sunday, November 1</b>. " +
+        (t.untilStart === 1 ? "1 day to go." : t.untilStart + " days to go.");
+    } else if (t.idx > DAYS) {
+      st.innerHTML = "November is over. Final count: <b>" + fmt(total) + "</b> words.";
+    } else {
+      var diff = total - c.pace, left = GOAL - total, daysLeft = DAYS - t.idx + 1;
+      var need = Math.ceil(left / daysLeft);
+      var lead = diff >= 0
+        ? "<b class=\"ahead\">" + fmt(diff) + " words ahead</b> of pace"
+        : "<b class=\"behind\">" + fmt(-diff) + " words behind</b> pace";
+      st.innerHTML = "Day " + t.idx + " of 30. " + lead + ". " + fmt(need) + " a day finishes on time.";
+    }
+
+    var todayWords = t.idx >= 1 && t.idx <= DAYS ? words(t.idx) : 0;
+    $("s-today").textContent = fmt(todayWords);
+    $("s-today-s").textContent = t.idx === 0 ? "starts Nov 1" : t.idx > DAYS ? "challenge over" : weekday(t.idx) + ", Nov " + t.idx;
+    var avg = c.elapsed > 0 ? total / c.elapsed : 0;
+    $("s-avg").textContent = fmt(avg);
+    $("s-ch").textContent = total >= GOAL ? "Done" : total === 0 ? "Prologue" : "Ch. " + Math.min(30, Math.floor(total / DAILY) + 1);
+    var fin = $("s-fin"), finS = $("s-fin-s");
+    if (total >= GOAL) {
+      var dayDone = 0;
+      for (var i = 1; i <= DAYS; i++) if (c.cum[i] >= GOAL) { dayDone = i; break; }
+      fin.textContent = "Nov " + dayDone; finS.textContent = "finished";
+    } else if (avg > 0) {
+      var proj = Math.ceil(GOAL / avg);
+      fin.textContent = proj <= DAYS ? "Nov " + proj : "Dec " + (proj - DAYS);
+      finS.textContent = "at current pace";
+    } else { fin.textContent = "Nov 30"; finS.textContent = "target"; }
+
+    drawChart(c);
+    drawLog(c);
+  }
+
+  function el(name, attrs, text) {
+    var n = document.createElementNS("http://www.w3.org/2000/svg", name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function drawChart(c) {
+    var svg = $("chart"); while (svg.firstChild) svg.removeChild(svg.firstChild);
+    var L = 52, R = 14, T = 14, B = 34, W = 640, H = 250, pw = W - L - R, ph = H - T - B;
+    var ymax = Math.max(GOAL, Math.ceil(c.total / 10000) * 10000);
+    function x(d) { return L + pw * d / DAYS; }
+    function y(v) { return T + ph - ph * v / ymax; }
+    for (var v = 0; v <= ymax; v += 10000) {
+      svg.appendChild(el("line", { x1: L, x2: W - R, y1: y(v), y2: y(v), stroke: "var(--line)", "stroke-width": 1 }));
+      svg.appendChild(el("text", { x: L - 8, y: y(v) + 4, "text-anchor": "end" }, v === 0 ? "0" : (v / 1000) + "k"));
+    }
+    [1, 8, 15, 22, 30].forEach(function (d) {
+      svg.appendChild(el("text", { x: x(d), y: H - 12, "text-anchor": d === 30 ? "end" : "middle" }, "Nov " + d));
+    });
+    svg.appendChild(el("line", { x1: x(26), x2: x(26), y1: T, y2: T + ph, stroke: "var(--line)", "stroke-dasharray": "2 3" }));
+    svg.appendChild(el("text", { x: x(26) - 4, y: T + 10, "text-anchor": "end" }, "Thanksgiving"));
+    svg.appendChild(el("line", { x1: x(0), y1: y(0), x2: x(30), y2: y(GOAL), stroke: "var(--muted)", "stroke-width": 1.5, "stroke-dasharray": "5 4", fill: "none" }));
+    var upto = Math.max(c.last, c.elapsed);
+    if (c.t.idx >= 1 && upto > 0) {
+      var pts = [], area = "M" + x(0) + " " + y(0);
+      for (var d = 0; d <= upto; d++) { pts.push(x(d) + "," + y(c.cum[d])); area += " L" + x(d) + " " + y(c.cum[d]); }
+      area += " L" + x(upto) + " " + y(0) + " Z";
+      svg.appendChild(el("path", { d: area, fill: "var(--brass-fill)", "fill-opacity": 0.18, stroke: "none" }));
+      svg.appendChild(el("polyline", { points: pts.join(" "), fill: "none", stroke: "var(--brass)", "stroke-width": 2.5, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+      svg.appendChild(el("circle", { cx: x(upto), cy: y(c.cum[upto]), r: 4.5, fill: "var(--brass)", stroke: "var(--bg)", "stroke-width": 2 }));
+      var anchor = upto > 24 ? "end" : "start";
+      svg.appendChild(el("text", { x: x(upto) + (anchor === "end" ? -10 : 10), y: y(c.cum[upto]) - 8, "text-anchor": anchor, style: "fill: var(--ink)" }, fmt(c.cum[upto])));
+    } else {
+      svg.appendChild(el("text", { x: L + pw / 2, y: T + ph / 2, "text-anchor": "middle" }, ""));
+    }
+  }
+
+  function drawLog(c) {
+    var box = $("log"); box.textContent = "";
+    var days = [];
+    for (var d = DAYS; d >= 1; d--) if (entries[d]) days.push(d);
+    if (!days.length) {
+      var e = document.createElement("div"); e.className = "empty";
+      var s = document.createElement("strong"); s.textContent = "No entries yet. ";
+      e.appendChild(s);
+      e.appendChild(document.createTextNode("Each day's word count and a short note will show up here once the writing starts."));
+      box.appendChild(e); return;
+    }
+    var wrap = document.createElement("div"); wrap.className = "tablewrap";
+    var tbl = document.createElement("table"); tbl.className = "log";
+    tbl.innerHTML = "<thead><tr><th>Day</th><th class=\"n\">Words</th><th class=\"n\">Total</th><th>Note</th></tr></thead>";
+    var tb = document.createElement("tbody");
+    days.forEach(function (d) {
+      var tr = document.createElement("tr");
+      var a = document.createElement("td"); a.className = "d"; a.textContent = weekday(d) + " Nov " + d;
+      var b = document.createElement("td"); b.className = "n"; b.textContent = fmt(words(d));
+      var t2 = document.createElement("td"); t2.className = "n"; t2.textContent = fmt(c.cum[d]);
+      var n = document.createElement("td"); n.className = "note"; n.textContent = entries[d].note;
+      tr.appendChild(a); tr.appendChild(b); tr.appendChild(t2); tr.appendChild(n); tb.appendChild(tr);
+    });
+    tbl.appendChild(tb); wrap.appendChild(tbl); box.appendChild(wrap);
+  }
+
+  render();
+  fetch("progress.json?t=" + Date.now(), { cache: "no-store" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) { load(data); render(); })
+    .catch(function () {
+      render();
+      $("status").textContent = "Couldn't load the latest word count. Try refreshing in a minute.";
+    });
+})();
+</script>
+</body>
+</html>

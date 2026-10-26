@@ -4,247 +4,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joel's Hiding Place</title>
-    <link rel="stylesheet" href="styles.css?=v3">
+    <title>Joel Alexander</title>
+    <meta name="description" content="Joel Alexander — developer, writer, and coffee-drinker. Notes on what I'm building, writing, and reading.">
+    <link rel="stylesheet" href="styles.css?=v5">
     <link rel="icon" type="image/jpg" href="unnamed.jpg">
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <header class="site-header">
-            <h1 class="site-title">Joel Alexander</h1>
-        </header>
+    <div class="page">
+        <aside class="sidebar">
+            <div class="sidebar-inner">
+                <p class="kicker">Joel's Hiding Place</p>
+                <a href="#top" class="wordmark">Joel<br>Alexander</a>
+                <p class="tagline">Code, stories, and coffee — mostly in that order.</p>
 
-        <!-- Navigation -->
-        <nav class="navbar">
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#now">Now</a></li>
-                <li><a href="#writings">Writings</a></li>
-                <li><a href="#projects">Programmings</a></li>
-                <li><a href="#devotional">Devotional</a></li>
-                <li><a href="#about">About</a></li>
-            </ul>
-        </nav>
+                <nav class="nav">
+                    <ul>
+                        <li><a href="#home" class="nav-link">Home</a></li>
+                        <li><a href="#now" class="nav-link">Now</a></li>
+                        <li><a href="#writing" class="nav-link">Writing</a></li>
+                        <li><a href="#devotional" class="nav-link">Devotional</a></li>
+                        <li><a href="#projects" class="nav-link">Projects</a></li>
+                        <li><a href="#about" class="nav-link">About</a></li>
+                    </ul>
+                </nav>
 
-        <div class="content">
-            <!-- Home Section -->
-            <section id="home">
-                <h1>Welcome to Joel's Hiding Place</h1>
-                <p>Why hello there! I'm Joel - the coder of computers, the writer of words, and the listener of songs.
-                </p>
-                <p>I work at Chick-Fil-A as a Team Lead, attend my church twice a week, and serve on both the tech team and the service team.</p>
-                <p>In my free time, I drink coffee, write stories, and program desktop applications. I use Arch Linux on my main PC, MacOS Tahoe on my laptop, 
-                    and only use Windows for gaming.
-                </p>
-                <p>My current programming projects are:<br>
-                <em>mDirt</em>, a Minecraft Datapack IDE<br>
-                <em>Crossed</em>, a scheduling app designed specifically for churches<br>
-                and of course my own Church's website!</p>
-                <p>I am writing a sci-fi anthology called <em>The Sky We Left Behind</em>. Writing the first short story about the end of the earth.</p>
+                <p class="sidebar-note">Behind a register at Chick-fil-A most days, and on the tech &amp; service teams at church most weeks.</p>
+            </div>
+        </aside>
+
+        <main class="content" id="top">
+            <!-- Home -->
+            <section id="home" class="section hero">
+                <h1>Hi, I'm Joel.</h1>
+                <p class="lede">I write code, chase a sci-fi story toward its ending, and spend a lot of evenings with a coffee I probably didn't need.</p>
+                <p>Most days I'm behind a register at Chick-fil-A. Most weeks I'm at church twice over, running things for the tech team and helping out on the service team. Whatever's left over goes to desktop apps, short fiction, and more books than is strictly reasonable.</p>
+                <p>This site is where all of that collects — what I'm building, what I'm writing, and what's on my mind this week.</p>
             </section>
 
-            <!-- Now Section -->
-            <section id="now">
-                <h2>What I'm Doing Now</h2>
-                <p><strong>👨‍💻 Programming: </strong><br>mDirt - a Minecraft Datapack IDE built in Python.<br>Crossed - a scheduling app designed for Churches.</p>
-                <p><strong>✍️ Writing: </strong><br><em>A dystopian sci-fi anthology</em>, titled <em>The Sky We Left Behind</em>.</p>
-                <p><strong>📚 Reading: </strong><br><em>The Name of the Wind</em> by Patrick Rothfuss.</p>
-                <p><strong>🎵 Music: </strong><br>Mostly classic rock - Zepplin, the Eagles, etc.</p>
-                <p><strong>🎮 Games: </strong><br>Minecraft. Hytale. Any co-op games with prox chat.
-                </p>
-                <p><strong>🧠 Learning: </strong><br>Preparing myself for college.<br>Learning app development for iOS and Android.</p>
-                <br>
-                <p><em>Last updated: April 15th, 2026 | Inspired by <a
-                            href="https://nownownow.com">nownownow.com</a></em></p>
-                <br>
-                <h2>Now Playing</h2>
-                <div class="spotify-widget">
-                    <img id="spotify-album" src="" alt="Album Art">
-                    <div class="spotify-info">
-                        <p id="spotify-track">Track Name</p>
-                        <p id="spotify-artist">Artist Name</p>
+            <!-- Now -->
+            <section id="now" class="section">
+                <p class="eyebrow">Right now</p>
+                <h2>What I'm Doing</h2>
+
+                <dl class="now-list">
+                    <div class="now-row">
+                        <dt>Building</dt>
+                        <dd>mDirt, a Minecraft datapack IDE in Python — and Crossed, a scheduling app for churches.</dd>
                     </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="spotify-progress"></div>
+                    <div class="now-row">
+                        <dt>Writing</dt>
+                        <dd><em>Of Fog and Shadow</em>, a NaNoWriMo story about gods, Engines, Walls, and politics.</dd>
                     </div>
+                    <div class="now-row">
+                        <dt>Reading</dt>
+                        <dd><em>The Martian</em> by Andy Weir.</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt>Listening</dt>
+                        <dd>Mostly classic rock — Zeppelin, the Eagles — with a heavy rotation of Twenty One Pilots.</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt>Playing</dt>
+                        <dd>Minecraft, Hytale, and pretty much anything co-op with proximity chat.</dd>
+                    </div>
+                    <div class="now-row">
+                        <dt>Studying</dt>
+                        <dd>The canon of Scripture, and — separately — iOS and Android development.</dd>
+                    </div>
+                </dl>
+
+                <p class="fine-print">Last updated October 26th, 2026 · idea borrowed from <a href="https://nownownow.com">nownownow.com</a></p>
+
+                <div class="now-playing">
+                    <p class="eyebrow eyebrow-tight">Now playing</p>
+                    <div class="spotify-widget">
+                        <img id="spotify-album" src="unnamed.jpg" alt="Album art">
+                        <div class="spotify-info">
+                            <p id="spotify-track">Nothing playing</p>
+                            <p id="spotify-artist"></p>
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="spotify-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="fine-print">Live from Spotify. Idea shamelessly borrowed from <a href="https://justjoshindev.github.io">Josh</a>.</p>
                 </div>
-                <p>This widget displays what song I am currently listening to.</p>
-                <p><em>Thanks to <a href="https://justjoshindev.github.io">Josh</a> for the idea.</em></p>
-
             </section>
 
-            <!-- Writings Section -->
-            <section id="writings">
-                <h2>Writings ✍️</h2>
-                <p>A place to share my writings and worlds.</p>
+            <!-- Writing -->
+            <section id="writing" class="section">
+                <p class="eyebrow">Fiction</p>
+                <h2>Writing</h2>
+                <p>A shelf for the stories in progress. Right now there's just a few, but it's a start.</p>
 
                 <div class="word-count">
-                    <div>Destruction</div>
-                    <div class="count">663</div>
-                    <div>And counting...</div>
+                    <span class="word-count-label">Of Fog and Shadow</span>
+                    <span class="count">0</span>
+                    <span class="word-count-label">words and counting</span>
                 </div>
 
                 <div class="project">
                     <div class="project-header" onclick="toggleProject('destruction')">
-                        <h2 class="project-title">Destruction <span class="project-status">First Draft</span>
-                        </h2>
-                        <div class="project-stats">
-                            <span>📖 663 words</span>
-                            <span>🎯 Goal: 5,000</span>
+                        <div class="project-heading">
+                            <h3 class="project-title">Destruction</h3>
+                            <span class="project-status">First Draft</span>
                         </div>
-                        <p style="margin: 10px 0 0 0; font-size: 1.1rem;">A sci-fi short story about humanity's exodous from earth, and one man's quest to save his family.</p>
+                        <div class="project-stats">
+                            <span>663 words</span>
+                            <span>Goal: 5,000</span>
+                        </div>
+                        <p class="project-blurb">A sci-fi short story about humanity's exodus from Earth, and one man's quest to save his family.</p>
                     </div>
 
                     <div class="project-content" id="destruction-content">
                         <div class="content-tabs">
-                            <button class="tab-button active"
-                                onclick="showTab(event, 'destruction', 'overview')">Overview</button>
-                            <button class="tab-button"
-                                onclick="showTab(event, 'destruction', 'characters')">Characters</button>
-                            <button class="tab-button"
-                                onclick="showTab(event, 'destruction', 'lore')">World</button>
-                            <button class="tab-button"
-                                onclick="showTab(event, 'destruction', 'excerpts')">Excerpts</button>
+                            <button class="tab-button active" onclick="showTab(event, 'destruction', 'overview')">Overview</button>
+                            <button class="tab-button" onclick="showTab(event, 'destruction', 'characters')">Characters</button>
+                            <button class="tab-button" onclick="showTab(event, 'destruction', 'lore')">World</button>
+                            <button class="tab-button" onclick="showTab(event, 'destruction', 'excerpts')">Excerpts</button>
                         </div>
 
                         <div class="tab-content active" id="destruction-overview">
-                            <h3>Project Overview</h3>
                             <div class="progress-bar">
                                 <div class="progress-fill" style="width: 13%"></div>
                             </div>
                             <p><strong>Progress:</strong> 13% complete (663 / 5,000 words)</p>
-
-                            <p><strong>Genre:</strong> Sci-fi Thriller</p>
+                            <p><strong>Genre:</strong> Sci-fi thriller</p>
                             <p><strong>Themes:</strong> Gods, kings, lies, political drama.</p>
 
-                            <p><strong>Synopsis:</strong><br>Thirty years ago, the United World Government interrupted every signal on Earth with a single announcement: the planet was dying, and only a fraction of humanity could be saved. Hundreds of massive life ships—Arks—were already under construction, but nowhere near enough to carry the global population. Billions would be left behind.
+                            <p><strong>Synopsis:</strong></p>
+                            <p>Thirty years ago, the United World Government interrupted every signal on Earth with a single announcement: the planet was dying, and only a fraction of humanity could be saved. Hundreds of massive life ships — Arks — were already under construction, but nowhere near enough to carry the global population. Billions would be left behind.</p>
+                            <p>At the time, there was hope. Scientific projections estimated nearly a century remained before Earth became uninhabitable, giving humanity time to evacuate in an orderly, if cruel, selection process.</p>
+                            <p>That estimate was wrong.</p>
+                            <p>Now, three decades into the evacuation effort, a second broadcast shatters what remains of global stability. Planetary systems are collapsing far faster than predicted. Humanity is informed it has four weeks before Earth becomes completely uninhabitable. The selection process is immediately reduced to randomized allocation, leaving most people with no control over their fate.</p>
+                            <p>In the midst of this collapse, Josiah Martin realizes his family will not be chosen. With time running out and systems already locked into final evacuation protocols, he makes a decision that will define his survival: he will not wait for selection. He will infiltrate an Ark.</p>
 
-At the time, there was hope. Scientific projections estimated nearly a century remained before Earth became uninhabitable, giving humanity time to evacuate in an orderly, if cruel, selection process.
-
-That estimate was wrong.
-
-Now, three decades into the evacuation effort, a second broadcast shatters what remains of global stability. Planetary systems are collapsing far faster than predicted. Humanity is informed it has four weeks before Earth becomes completely uninhabitable. The selection process is immediately reduced to randomized allocation, leaving most people with no control over their fate.
-
-In the midst of this collapse, Josiah Martin realizes his family will not be chosen. With time running out and systems already locked into final evacuation protocols, he makes a decision that will define his survival: he will not wait for selection. He will infiltrate an Ark.</p>
-
-                            <p><strong>Current Stage:</strong> First Draft</p>
+                            <p><strong>Current stage:</strong> First draft</p>
                         </div>
 
                         <div class="tab-content" id="destruction-characters">
-                            <h3>Main Characters</h3>
-                            <p>Characters coming soon.</p>
-
-                            <!-- <div class="character-card"> -->
-                            <!--     <h4 class="character-name">Edvin Fairbairns</h4> -->
-                            <!--     <p><strong>Role:</strong> Protagonist, Assassin</p> -->
-                            <!--     <p><strong>Age:</strong> Late 20s</p> -->
-                            <!--     <p>Edvin is a merciless assassin forged by years under the brutal tutelage of Kelton -->
-                            <!--         Blaine. Once a starving street orphan, he was shaped into a weapon that lives only -->
-                            <!--         for contracts and the blood they spill. Outwardly cold and efficient, he carries -->
-                            <!--         deep scars from a life where survival always outweighed morality. His eyes sometimes -->
-                            <!--         flare crimson, a hint of the darker forces within him, though he resists believing -->
-                            <!--         it means anything more than madness. His struggle -->
-                            <!--         lies between remaining a blade for hire or finding redemption in a world that has -->
-                            <!--         never shown him mercy.</p> -->
-                            <!--         never shown him mercy.</p> -->
-                            <!-- </div> -->
-
+                            <h4>Main Characters</h4>
+                            <p class="placeholder">Characters coming soon.</p>
                         </div>
 
                         <div class="tab-content" id="destruction-lore">
-                            <h3>World Building</h3>
-
-                            
+                            <h4>World Building</h4>
+                            <p class="placeholder">Notes coming soon.</p>
                         </div>
 
                         <div class="tab-content" id="destruction-excerpts">
-                            <h3>Story Excerpts</h3>
-
-                            
+                            <h4>Excerpts</h4>
+                            <p class="placeholder">Nothing polished enough to share yet.</p>
                         </div>
                     </div>
                 </div>
 
-                <p><em>All word counts are pulled from my Google Drive every 30 seconds.</em></p>
+                <div class="project">
+                    <div class="project-header" onclick="toggleProject('fog-and-shadow')">
+                        <div class="project-heading">
+                            <h3 class="project-title">Of Fog and Shadow</h3>
+                            <span class="project-status">First Draft</span>
+                        </div>
+                        <div class="project-stats">
+                            <span>Goal: 50,000</span>
+                        </div>
+                        <p class="project-blurb">This is my NaNoWriMo project.</p>
+                    </div>
+
+                    <div class="project-content" id="fog-and-shadow-content">
+                        <div class="content-tabs">
+                            <button class="tab-button active" onclick="showTab(event, 'fog-and-shadow', 'overview')">Overview</button>
+                            <button class="tab-button" onclick="showTab(event, 'fog-and-shadow', 'characters')">Characters</button>
+                            <button class="tab-button" onclick="showTab(event, 'fog-and-shadow', 'lore')">World</button>
+                            <button class="tab-button" onclick="showTab(event, 'fog-and-shadow', 'excerpts')">Excerpts</button>
+                        </div>
+
+                        <div class="tab-content active" id="fog-and-shadow-overview">
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <p><strong>Progress:</strong> 0% complete (0 / 50,000 words)</p>
+                            <p><strong>Genre:</strong> Dystopian Fantasy</p>
+                            <p><strong>Themes:</strong> Gods, kings, lies, political drama.</p>
+                            <p><strong>Synopsis:</strong> 
+Five hundred years ago, humanity chained its gods. The world died for it.
+
+What’s left lives behind the Wall of Sanctum, on rationed water and borrowed light, while the Shade swallows everything beyond.
+
+Tobin copies the Government’s decrees. He was taken from the slums as a boy, given a new name, and taught to be grateful. When a rebel named Ves corners him in the market, Tobin threatens to turn him in.
+
+He never does.
+
+Instead, he starts reading. The histories have been scraped and rewritten. The rations keep shrinking. And beneath the city, the Engines hum like something breathing.
+
+Some lies are the only thing holding a city up.</p>
+                        </div>
+
+                        <div class="tab-content" id="fog-and-shadow-characters">
+                            <h4>Main Characters</h4>
+                            <p class="placeholder">Characters coming soon.</p>
+                        </div>
+
+                        <div class="tab-content" id="fog-and-shadow-lore">
+                            <h4>World Building</h4>
+                            <p class="placeholder">Notes coming soon.</p>
+                        </div>
+
+                        <div class="tab-content" id="fog-and-shadow-excerpts">
+                            <h4>Excerpts</h4>
+                            <p class="placeholder">Nothing polished enough to share yet.</p>
+                        </div>
+                    </div>
+                </div>
+
             </section>
 
-            <!-- Devotional Section -->
-            <section id="devotional">
-                <h2>Weekly Devotional</h2>
+            <!-- Devotional -->
+            <section id="devotional" class="section">
+                <p class="eyebrow">Weekly devotional</p>
+                <h2>A Word for the Week</h2>
                 <blockquote>
-                    <p>"Finally, all of you, be like-minded, be sympathetic, love one another, be compassionate and
-                        humble."</p>
-                    <cite>- 1 Peter 3:8</cite>
+                    <p>"Finally, all of you, be like-minded, be sympathetic, love one another, be compassionate and humble."</p>
+                    <cite>1 Peter 3:8</cite>
                 </blockquote>
-                <p>We live in a world filled with hate, anger, and division. Every day we see people tearing each other
-                    down instead of
-                    lifting each other up. But God calls us to a different way, a way of compassion and
-                    humility.</p>
-                <p>God calls us to love instead of hate, to be slow to anger, and to walk in humility.
-                    When we live this way, we reflect the heart of Jesus in a world that desperatly needs His light.
-                </p>
-                <p><em>Devotional published once a week.</em></p>
+                <p>We live in a world filled with hate, anger, and division. Every day we see people tearing each other down instead of lifting each other up. But God calls us to a different way — a way of compassion and humility.</p>
+                <p>He calls us to love instead of hate, to be slow to anger, and to walk in humility. When we live this way, we reflect the heart of Jesus in a world that desperately needs His light.</p>
+                <p class="fine-print">A new devotional, published once a week.</p>
             </section>
 
-            <!-- Projects Section -->
-            <section id="projects">
-                <h2>Programmings 💻</h2>
-                <p>My recent programmings. From applications to websites to backend tools.</p>
+            <!-- Projects -->
+            <section id="projects" class="section">
+                <p class="eyebrow">Programming</p>
+                <h2>Projects</h2>
+                <p>The recent programmings — applications, websites, and the occasional backend tool.</p>
 
                 <div class="grid">
                     <div class="project-tile">
-                        <h3>Retro Website</h3>
-                        <p>This very website! A CRT 80s vibe!</p>
-                        <p><strong>Tech:</strong> Vanilla HTML, CSS, and JS.</p>
+                        <h3>This Website</h3>
+                        <p>Rebuilt from a CRT retro theme into something warmer and more readable. Same content, new coat of paint.</p>
+                        <p class="tech">Vanilla HTML, CSS, and JS.</p>
                     </div>
 
                     <div class="project-tile">
                         <h3>Bitpad</h3>
-                        <p>A developer-focused text editor for notes, ideas, and inspiration built with PySide6. It
-                            features session persistence, find-replace, and everything else you'd expect from a
-                            notepad-like tool.</p>
-                        <p><strong>Tech:</strong> Python, Qt6.</p>
+                        <p>A developer-focused text editor for notes, ideas, and inspiration. Session persistence, find-and-replace, and everything else you'd expect from a notepad-like tool.</p>
+                        <p class="tech">Python, Qt6.</p>
                     </div>
 
                     <div class="project-tile">
                         <h3>mDirt</h3>
-                        <p>A desktop application that provides a robust IDE for creating Minecraft Datapacks.
-                        </p>
-                        <p><strong>Tech:</strong> Python, Qt6.</p>
+                        <p>A desktop application that provides a robust IDE for creating Minecraft datapacks.</p>
+                        <p class="tech">Python, Qt6.</p>
                     </div>
 
                     <div class="project-tile">
                         <h3>Crossed</h3>
-                        <p>A desktop & mobile app that provides an easy to use schedule system, designed specifically for churches.</p>
-                        <p><strong>Tech: </strong>Swift, C++.</p>
+                        <p>A desktop and mobile app for easy scheduling, built specifically for churches.</p>
+                        <p class="tech">Swift, C++.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- About Section -->
-            <section id="about">
-                <h2>About Me 👋</h2>
-                <p>Hello! I'm Joel - a developer, writer, coffee-drinker, and procrastinator.</p>
+            <!-- About -->
+            <section id="about" class="section">
+                <p class="eyebrow">Who I am</p>
+                <h2>About Me</h2>
+                <p>Hello! I'm Joel — a developer, writer, coffee-drinker, and procrastinator, roughly in that order depending on the day.</p>
 
                 <ul class="fun-facts">
-                    <li>🚀 Started coding at age 8 with Scratch</li>
-                    <li>☕ Coffee consumption directly correlates with code quality</li>
-                    <li>🎮 Retro gaming enthusiast - nothing beats the classics</li>
-                    <li>🌟 I love Git. I hate Git. - Every programmer ever</li>
-                    <li>🎸 I also write songs. I cannot sing, sadly</li>
-                    <li>🎮 Games get made when I find motivation</li>
+                    <li>Started coding at 8 years old with Scratch.</li>
+                    <li>Coffee consumption correlates directly with code quality.</li>
+                    <li>Retro gaming enthusiast — nothing beats the classics.</li>
+                    <li>I love Git. I hate Git. Every programmer, ever.</li>
+                    <li>I also write songs. I cannot sing, sadly.</li>
+                    <li>Games get made when I find the motivation.</li>
                 </ul>
 
-                <p>When I'm not programming, writing, or thinking about programming and writing, you can usually find me
-                    playing games with friends, building computers, or eating chocolate.</p>
+                <p>When I'm not programming, writing, or thinking about programming and writing, you can usually find me playing games with friends, building computers, or eating more chocolate than I'll admit to.</p>
             </section>
-        </div>
-    </div>
 
-    <footer>
-        <p>© Joel's Hiding Place, 2025</p>
-    </footer>
+            <footer class="site-footer">
+                <p>© Joel Alexander, 2026</p>
+            </footer>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
